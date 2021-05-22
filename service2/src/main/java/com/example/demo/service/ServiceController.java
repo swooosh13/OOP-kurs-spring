@@ -39,16 +39,7 @@ public class ServiceController {
 
   // TODO не робит
   @PostMapping("/postResults")
-  public String postResults(@RequestBody String str) {
-    try {
-      if (str.equals("\"result\"")) {
-        return service.getResults();
-      }
-      FileWriter file = new FileWriter(service.path + "report.json");
-      file.write("");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return null;
+  public String postResults() {
+    return service.getResults();
   }
 }

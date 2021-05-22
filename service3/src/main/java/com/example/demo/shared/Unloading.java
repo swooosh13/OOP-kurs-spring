@@ -69,11 +69,9 @@ public class Unloading extends Thread {
   }
 
   public String printInfo() {
-
 //    for (int i = 0; i < ships.size(); i++) {
 //      str = str + ships.get(i) + "\n";
 //    }
-
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     HashMap<String, Object> map = new HashMap<>();
     map.put("Cargo Type", ships.get(0).getCargoType().toString());
@@ -86,15 +84,6 @@ public class Unloading extends Thread {
 
     String result = gson.toJson(map);
 
-//
-//    System.out.println(ships.get(0).getCargoType().toString());
-//    System.out.println("Fine: " + fine);
-//    System.out.println("Count Of Cranes: " + countCranes);
-//    System.out.println("Count Of Ships: " + amountOfShips);
-//    System.out.println("Average Size Of Queue: " + sizeOfQueue / cranes.size());
-//    System.out.println("Average Time Of Wait: " + Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getWaitTime()).sum() / amountOfShips));
-//    System.out.println("Average time of delay of unload: " + Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getUnloadDelay()).sum() / amountOfShips));
-//    System.out.println("**************");
     return result;
   }
 }

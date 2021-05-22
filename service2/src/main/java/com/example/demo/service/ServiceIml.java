@@ -74,6 +74,6 @@ public class ServiceIml {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    return data;
+    return "ok";
   }
 }

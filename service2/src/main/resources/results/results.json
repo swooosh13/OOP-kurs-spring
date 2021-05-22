@@ -1,0 +1,25 @@
+[{
+  "queueSize": 146,
+  "shipsCount": 3261,
+  "averageTimeOfWait": "0:0:0",
+  "averageTimeOfDelayOfUnload": "0:0:31",
+  "Fine": 108400,
+  "Cargo Type": "Tanker",
+  "cranesCount": 4
+}, {
+  "queueSize": 146,
+  "shipsCount": 3407,
+  "averageTimeOfWait": "0:0:0",
+  "averageTimeOfDelayOfUnload": "0:0:33",
+  "Fine": 77400,
+  "Cargo Type": "Bulker",
+  "cranesCount": 3
+}, {
+  "queueSize": 141,
+  "shipsCount": 3548,
+  "averageTimeOfWait": "0:0:0",
+  "averageTimeOfDelayOfUnload": "0:0:28",
+  "Fine": 79700,
+  "Cargo Type": "Container",
+  "cranesCount": 3
+}]
