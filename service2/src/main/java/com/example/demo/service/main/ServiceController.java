@@ -1,12 +1,11 @@
-package com.example.demo.service;
+package com.example.demo.service.main;
 
+import com.example.demo.service.main.ServiceIml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/service2")
@@ -19,7 +18,7 @@ public class ServiceController {
   }
 
   @GetMapping("/getSchedule")
-  public String getSchedule() {
+  public String getSchedule() throws ParseException {
     return service.getSchedule();
   }
 
@@ -31,13 +30,12 @@ public class ServiceController {
         return "empty file";
       }
       return data;
-    } catch (FileNotFoundException e) {
+    } catch (FileNotFoundException | ParseException e) {
       e.printStackTrace();
     }
     return null;
   }
 
-  // TODO не робит
   @PostMapping("/postResults")
   public String postResults() {
     return service.getResults();

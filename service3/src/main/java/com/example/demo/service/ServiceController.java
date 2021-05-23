@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-
-import com.example.demo.shared.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;

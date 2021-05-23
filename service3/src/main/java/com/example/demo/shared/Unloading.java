@@ -23,7 +23,7 @@ public class Unloading extends Thread {
 
   public Unloading(List<Ship> ships) {
     this.ships = ships;
-    amountOfShips += ships.size();
+    amountOfShips = ships.size();
   }
 
   @Override

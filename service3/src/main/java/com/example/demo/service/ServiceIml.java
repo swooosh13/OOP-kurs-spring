@@ -21,7 +21,7 @@ public class ServiceIml {
   public List<Ship> getShips() {
     RestTemplate restTemplate = new RestTemplate();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    String json = restTemplate.getForObject(service2_uri + "/getSchedule/arrivalOfShips", String.class);
+    String json = restTemplate.getForObject(service2_uri + "/getSchedule/shipsArrival", String.class);
 
     Type listShipsType = new TypeToken<List<Ship>>() {}.getType();
 
@@ -35,6 +35,7 @@ public class ServiceIml {
   public String getResults() throws InterruptedException {
     String result = "";
     List<Ship> ships = getShips();
+//    System.out.println(ships);
     Collections.sort(ships);
 
     List<String> results = new ArrayList<>();

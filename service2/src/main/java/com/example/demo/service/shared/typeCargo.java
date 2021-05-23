@@ -1,4 +1,4 @@
-package com.example.demo.shared;
+package com.example.demo.service.shared;
 
 import java.util.Random;
 
@@ -18,9 +18,9 @@ public enum typeCargo {
   public int getRandomTotal() {
     Random random = new Random();
     return switch (this) {
-      case TANKER -> random.nextInt(100) + 1;
-      case BULKER -> random.nextInt(100) + 1;
-      case CONTAINER -> random.nextInt(20) + 1;
+      case TANKER -> random.nextInt(10000) + 1;
+      case BULKER -> random.nextInt(10000) + 1;
+      case CONTAINER -> random.nextInt(5000) + 1;
     };
   }
 

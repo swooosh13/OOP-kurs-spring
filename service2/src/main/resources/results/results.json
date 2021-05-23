@@ -1,25 +1,25 @@
 [{
-  "queueSize": 146,
-  "shipsCount": 3261,
+  "craneQueueSize": 147,
+  "shipsCount": 147,
   "averageTimeOfWait": "0:0:0",
-  "averageTimeOfDelayOfUnload": "0:0:31",
-  "Fine": 108400,
+  "averageTimeOfDelayOfUnload": "0:12:3",
+  "Fine": 97000,
   "Cargo Type": "Tanker",
   "cranesCount": 4
 }, {
-  "queueSize": 146,
-  "shipsCount": 3407,
+  "craneQueueSize": 145,
+  "shipsCount": 145,
   "averageTimeOfWait": "0:0:0",
-  "averageTimeOfDelayOfUnload": "0:0:33",
-  "Fine": 77400,
+  "averageTimeOfDelayOfUnload": "0:12:14",
+  "Fine": 108400,
   "Cargo Type": "Bulker",
-  "cranesCount": 3
+  "cranesCount": 4
 }, {
-  "queueSize": 141,
-  "shipsCount": 3548,
+  "craneQueueSize": 161,
+  "shipsCount": 161,
   "averageTimeOfWait": "0:0:0",
-  "averageTimeOfDelayOfUnload": "0:0:28",
-  "Fine": 79700,
+  "averageTimeOfDelayOfUnload": "0:12:2",
+  "Fine": 136600,
   "Cargo Type": "Container",
-  "cranesCount": 3
+  "cranesCount": 5
 }]
