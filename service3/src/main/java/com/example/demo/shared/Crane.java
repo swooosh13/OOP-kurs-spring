@@ -36,7 +36,7 @@ public class Crane implements Callable<Object> {
       currentShip.setUnloadTimeStart(timeToUnload);
       currentShip.setWaitTime((int) (Utils.getTimeInMillis(currentTime) - Utils.getTimeInMillis(currentShip.getTimeOfArrival())) / 1000 / 60);
 
-      currentTime.plusMinutes((int) currentShip.getUnloadTime());
+      currentTime.plusMinutes(currentShip.getUnloadTime());
 
       Ship nextShip = ships.peek();
 
@@ -45,11 +45,11 @@ public class Crane implements Callable<Object> {
       }
 
       if (nextShip.getTimeOfArrival().isAfter(currentTime)) {
-        this.fine += calculateFine((int) (Utils.getTimeInMillis(nextShip.getTimeOfArrival()) - Utils.getTimeInMillis(currentTime)) / 1000 / 60);
+        fine += calculateFine((int) (Utils.getTimeInMillis(nextShip.getTimeOfArrival()) - Utils.getTimeInMillis(currentTime)) / 1000 / 60);
       }
 
       try {
-        Thread.sleep(5);
+        Thread.sleep(4);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }

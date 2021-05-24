@@ -50,7 +50,7 @@ public class Ship implements Comparable<Ship> {
   }
 
   public LocalDateTime getTimeOfArrival() {
-    return arrival;
+    return actualArrival;
   }
 
   public int getUnloadDelay() {

@@ -9,18 +9,18 @@ public enum typeCargo {
 
   public double getCarryingCofficient() {
     return switch (this) {
-      case TANKER -> 5;
-      case BULKER -> 5;
-      case CONTAINER -> 2;
+      case TANKER -> 500;
+      case BULKER -> 500;
+      case CONTAINER -> 200;
     };
   }
 
   public int getRandomTotal() {
     Random random = new Random();
     return switch (this) {
-      case TANKER -> random.nextInt(100) + 1;
-      case BULKER -> random.nextInt(100) + 1;
-      case CONTAINER -> random.nextInt(20) + 1;
+      case TANKER -> random.nextInt(10000) + 1;
+      case BULKER -> random.nextInt(10000) + 1;
+      case CONTAINER -> random.nextInt(5000) + 1;
     };
   }
 

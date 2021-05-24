@@ -9,9 +9,9 @@ public enum typeCargo {
 
   public double getCarryingCofficient() {
     return switch (this) {
-      case TANKER -> 5;
-      case BULKER -> 5;
-      case CONTAINER -> 2;
+      case TANKER -> 500;
+      case BULKER -> 500;
+      case CONTAINER -> 200;
     };
   }
 

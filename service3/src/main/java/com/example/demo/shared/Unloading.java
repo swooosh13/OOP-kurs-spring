@@ -28,7 +28,7 @@ public class Unloading extends Thread {
 
   @Override
   public void run() {
-    while (fine >= Utils.PRICE_OF_CRANE * countCranes) {
+    while (fine >= 30000 * countCranes) { // priceOfCrane * count of Cranes
 
       queueOfShips = new ConcurrentLinkedQueue<>(ships);
 
@@ -55,7 +55,6 @@ public class Unloading extends Thread {
 
       cranes.stream().forEach(crane -> {
         fine += crane.getFine();
-        sizeOfQueue += crane.getSize();
       });
     }
   }
@@ -68,17 +67,23 @@ public class Unloading extends Thread {
     return fine;
   }
 
+  public String getShipsToString() {
+    String str = "";
+    for (int i =0; i < ships.size(); i++) {
+      str= str+ ships.get(0) + "\n";
+    }
+    return str;
+  }
+
   public String printInfo() {
-//    for (int i = 0; i < ships.size(); i++) {
-//      str = str + ships.get(i) + "\n";
-//    }
+//  String allShips = getShipsToString();
+
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     HashMap<String, Object> map = new HashMap<>();
     map.put("Cargo Type", ships.get(0).getCargoType().toString());
     map.put("Fine", fine);
     map.put("cranesCount", countCranes);
     map.put("shipsCount", amountOfShips);
-    map.put("craneQueueSize", (sizeOfQueue / cranes.size()));
     map.put("averageTimeOfWait",  Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getWaitTime()).sum() / amountOfShips));
     map.put("averageTimeOfDelayOfUnload",  Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getUnloadDelay()).sum() / amountOfShips));
 
