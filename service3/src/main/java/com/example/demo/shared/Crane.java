@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Crane implements Callable<Object> {
 
-  private volatile LocalDateTime currentTime;
+  private LocalDateTime currentTime;
   private int fine = 0;
   private int size = 0;
 
@@ -27,7 +27,6 @@ public class Crane implements Callable<Object> {
   @Override
   public Object call() throws InterruptedException {
     while (!ships.isEmpty()) {
-
       Ship currentShip = ships.poll();
 
       currentTime = Utils.getDateFromMillis(Math.max(Utils.getTimeInMillis(currentShip.getTimeOfArrival()), Utils.getTimeInMillis(currentTime)));
@@ -36,7 +35,7 @@ public class Crane implements Callable<Object> {
       currentShip.setUnloadTimeStart(timeToUnload);
       currentShip.setWaitTime((int) (Utils.getTimeInMillis(currentTime) - Utils.getTimeInMillis(currentShip.getTimeOfArrival())) / 1000 / 60);
 
-      currentTime.plusMinutes(currentShip.getUnloadTime());
+//      currentTime.plusMinutes(currentShip.getUnloadTime());
 
       Ship nextShip = ships.peek();
 
@@ -49,7 +48,7 @@ public class Crane implements Callable<Object> {
       }
 
       try {
-        Thread.sleep(4);
+        Thread.sleep(40);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }

@@ -39,6 +39,10 @@ public class ServiceIml {
     Collections.sort(ships);
 
     List<String> results = new ArrayList<>();
+
+    List<Unloading> unloadings = new ArrayList<>();
+
+    int i = 0;
     for (typeCargo type: typeCargo.values()) {
       List<Ship> list = new ArrayList<>();
 
@@ -47,11 +51,29 @@ public class ServiceIml {
           list.add(ship);
         }
       }
-      Unloading unloading = new Unloading(list);
-      unloading.start();
-      unloading.join();
 
-      results.add(unloading.printInfo());
+      Unloading unloading = new Unloading(list);
+      unloadings.add(unloading);
+      unloading.start();
+
+//      unloading.start();
+//      unloading.join();
+//      results.add(unloading.printInfo());
+      i++;
+    }
+
+    for (int j = 0; j < unloadings.size(); j++) {
+      try {
+        unloadings.get(j).join();
+      }
+      catch (InterruptedException e) {
+        // Если ошибка, то вывести сообщение
+        System.out.println("Error: " + e.getMessage());
+      }
+    }
+
+    for (int j = 0; j < unloadings.size(); j++) {
+      results.add(unloadings.get(j).printInfo());
     }
 
     return results.toString();

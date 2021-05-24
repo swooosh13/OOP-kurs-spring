@@ -33,30 +33,33 @@ public class Unloading extends Thread {
       queueOfShips = new ConcurrentLinkedQueue<>(ships);
 
       fine = 0;
-      sizeOfQueue = 0;
-
       countCranes++;
+
       cranes = new ArrayList<>(countCranes);
-
-      ExecutorService executor = Executors.newFixedThreadPool(countCranes);
-
-      for (int i = 0; i < countCranes; i++) {
-        Crane crane = new Crane(queueOfShips);
-        cranes.add(crane);
-      }
-
-      try {
-        executor.invokeAll(cranes);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-
-      executor.shutdown();
+      cranes = cranesTreadPool(cranes, countCranes);
 
       cranes.stream().forEach(crane -> {
         fine += crane.getFine();
       });
     }
+  }
+
+  public List<Crane> cranesTreadPool(List<Crane> cranes, int countOfCranes) {
+    ExecutorService executor = Executors.newFixedThreadPool(countOfCranes);
+
+    for (int i = 0; i < countOfCranes; i++) {
+      Crane crane = new Crane(queueOfShips);
+      cranes.add(crane);
+    }
+
+    try {
+      executor.invokeAll(cranes);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    executor.shutdown();
+    return cranes;
   }
 
   public int getCranesQuantity() {
@@ -69,8 +72,8 @@ public class Unloading extends Thread {
 
   public String getShipsToString() {
     String str = "";
-    for (int i =0; i < ships.size(); i++) {
-      str= str+ ships.get(0) + "\n";
+    for (int i = 0; i < ships.size(); i++) {
+      str = str + ships.get(0) + "\n";
     }
     return str;
   }
@@ -84,8 +87,8 @@ public class Unloading extends Thread {
     map.put("Fine", fine);
     map.put("cranesCount", countCranes);
     map.put("shipsCount", amountOfShips);
-    map.put("averageTimeOfWait",  Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getWaitTime()).sum() / amountOfShips));
-    map.put("averageTimeOfDelayOfUnload",  Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getUnloadDelay()).sum() / amountOfShips));
+    map.put("averageTimeOfWait", Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getWaitTime()).sum() / amountOfShips));
+    map.put("averageTimeOfDelayOfUnload", Utils.intToDateFormat(ships.stream().mapToInt(a -> a.getUnloadDelay()).sum() / amountOfShips));
 
     String result = gson.toJson(map);
 
